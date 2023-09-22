@@ -13,6 +13,7 @@ const run = async () => {
         //     }
         // });
 
+        //createMany ไม่สามารถใช้ หลาย data ได้ นิยม create แบบปกติ
         // const result = await prisma.category.createMany({
         //     data: [
         //         { name: 'Food' },
@@ -88,27 +89,74 @@ const run = async () => {
         //     }
         // });
 
-        const result = await prisma.user.create({
-            data: {
-                username: 'Emily',
-                password: '1122334455',
-                transactions: {
-                    create: {
-                        payee: '7-11',
-                        amount: 89,
-                        date: new Date('2023-09-05'),
-                        category: {
-                            create: {
-                                name: 'Beverage'
-                            }
-                        }
-                    }
-                }
-            },
-            include: {
-                transactions: true
-            }
-        });
+        // const result = await prisma.user.create({
+        //     data: {
+        //         username: 'Emily',
+        //         password: '1122334455',
+        //         transactions: {
+        //             create: {
+        //                 payee: '7-11',
+        //                 amount: 89,
+        //                 date: new Date('2023-09-05'),
+        //                 category: {
+        //                     create: {
+        //                         name: 'Beverage'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     },
+        //     include: {
+        //         transactions: true
+        //     }
+        // });
+        // UPDATE
+        // const result = await prisma.user.update({
+        //     data: {
+        //         password: '123123'
+        //     },
+        //     where: {
+        //         id: 1
+        //     }
+        // });
+
+        // const result = await prisma.user.updateMany({
+        //     data: {
+        //         password: '101010'
+        //     },
+        //     where: {
+        //         username: {
+        //             startsWith: 'J'
+        //         }
+        //     }
+        // });
+
+        // const result = await prisma.user.upsert({
+        //     create: {
+        //         username: 'Sunny',
+        //         password: '12341234'
+        //     },
+        //     update: {
+        //         password: '123456'
+        //     },
+        //     where: {
+        //         username: 'sunny'
+        //     }
+        // });
+
+        //DELETE
+        // const result = await prisma.user.delete({
+        //     where: {
+        //         username: 'Sunny'
+        //     }
+        // });
+
+        // const result = await prisma.transaction.deleteMany({
+        //     where: {
+        //         payee: '7-11'
+        //     }
+        // });
+
 
         console.log(result);
     } catch (err) {
